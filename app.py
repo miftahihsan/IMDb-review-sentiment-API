@@ -22,9 +22,9 @@ def jsonFile():
     for person in data["Index"]:
         my_list.append(person["name"])
     
-    for i in my_list:
-        print("HELLO")
-        print(i)
+    # for i in my_list:
+    #     print("HELLO")
+    #     print(i)
     
     ex = example()
 

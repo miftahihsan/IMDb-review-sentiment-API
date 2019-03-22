@@ -4,6 +4,7 @@ import json
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+data_text = ""
 
 @app.route('/')
 def mainPage():
@@ -15,12 +16,12 @@ def jsonFile():
 
     data = request.get_json()
 
-    Index = data.get("Index")
+    Index = data.get("Review")
 
     my_list = []
 
-    for person in data["Index"]:
-        my_list.append(person["name"])
+    for person in data["Review"]:
+        my_list.append(person["review"])
     
     # for i in my_list:
     #     print("HELLO")
@@ -28,8 +29,8 @@ def jsonFile():
     
     ex = example()
 
-    return str(ex.predict(my_list))
+    return str(ex.predict(my_list, data_text))
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4040)

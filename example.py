@@ -6,7 +6,7 @@ import cPickle
 
 class example():
 
-    def predict(self, reviewList):
+    def predict(self, reviewList, data_text):
         pad = 'pre'
         num_words = 10000
         max_tokens = 544
@@ -21,9 +21,10 @@ class example():
             return text
 
         tokenizer = Tokenizer(num_words=num_words)
-        data_text = ""
-        with open("data_text_python2.pickle", "rb") as f:
-            data_text = cPickle.load(f)
+        # data_text = ""
+        if data_text == "":
+            with open("data_text_python2.pickle", "rb") as f:
+                data_text = cPickle.load(f)
             
         tokenizer.fit_on_texts(data_text)
 

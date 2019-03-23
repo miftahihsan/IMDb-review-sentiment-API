@@ -1,7 +1,8 @@
 import tensorflow as tf
 from tensorflow.python.keras.preprocessing.text import Tokenizer
 from tensorflow.python.keras.preprocessing.sequence import pad_sequences
-import cPickle
+# import cPickle
+import pickle
 
 
 class example():
@@ -24,7 +25,8 @@ class example():
         # data_text = ""
         if data_text == "":
             with open("data_text_python2.pickle", "rb") as f:
-                data_text = cPickle.load(f)
+                # data_text = cPickle.load(f)
+                data_text = pickle.load(f)
             
         tokenizer.fit_on_texts(data_text)
 

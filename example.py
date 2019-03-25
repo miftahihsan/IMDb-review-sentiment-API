@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.python.keras.preprocessing.text import Tokenizer
 from tensorflow.python.keras.preprocessing.sequence import pad_sequences
+# cPickle is for v2
 # import cPickle
 import pickle
 
@@ -25,6 +26,7 @@ class example():
         # data_text = ""
         if data_text == "":
             with open("data_text_python2.pickle", "rb") as f:
+                # cPickle is for v2
                 # data_text = cPickle.load(f)
                 data_text = pickle.load(f)
             
@@ -42,10 +44,22 @@ class example():
 
         total_score = 0
 
+        best_review_index = 0
+        best_review_score = 0
+
+        counter = 0
         for i in score_list:
+
+            if i > best_review_score:
+                best_review_score = i
+                best_review_index = counter
+
             total_score += i
+            counter = counter + 1
+
         
-        return total_score / len(score_list)
+        
+        return total_score / len(score_list), best_review_index
 
         # return model.predict(tokens_pad)
 
